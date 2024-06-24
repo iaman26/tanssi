@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
 
 export const useAppStore = defineStore({
-  id: 'app',
+  id: 'connectWallets',
   state: (): any => ({
     isModal: false
   }),

@@ -41,12 +41,9 @@
           opacity: 1;
           transform: translateY(0px);
         "
+        v-outside="closeModal"
       >
-        <div
-          class="m_5df29311 mantine-Modal-body"
-          id="mantine-crsx3zise-body"
-          @click="closeModal"
-        >
+        <div class="m_5df29311 mantine-Modal-body" id="mantine-crsx3zise-body">
           <div
             class="m_89d60db1 mantine-Tabs-root"
             data-variant="default"
@@ -112,6 +109,72 @@
                     --stack-justify: flex-start;
                   "
                 >
+                  <button
+                    class="mantine-focus-auto ExtensionButton_button__lfkkt m_87cf2631 mantine-UnstyledButton-root"
+                    type="button"
+                    data-selected="false"
+                    data-testid="polkadot-js"
+                    data-installed="false"
+                    style="--button-color: 255, 140, 0"
+                    @click="isConnectMetamask()"
+                  >
+                    <div
+                      class="m_410352e9 mantine-Grid-root __m__-rf3"
+                      style="--grid-align: center"
+                    >
+                      <div class="m_dee7bd2f mantine-Grid-inner">
+                        <div class="m_96bdd299 mantine-Grid-col __m__-rf5">
+                          <img
+                            alt="Polkadot{.js}"
+                            data-disabled="true"
+                            loading="lazy"
+                            width="140"
+                            height="140"
+                            decoding="async"
+                            data-nimg="1"
+                            class="m_9e117634 mantine-Image-root"
+                            src="../../../assets/img/logo_metamask.svg"
+                            style="
+                              color: transparent;
+                              --image-object-fit: scale-down;
+                              height: 30px;
+                            "
+                          />
+                        </div>
+
+                        <div class="m_96bdd299 mantine-Grid-col __m__-rf8">
+                          <p
+                            class="mantine-focus-auto m_b6d8b162 mantine-Text-root"
+                            style="
+                              color: var(--mantine-color-white);
+                              font-weight: 500;
+                            "
+                          >
+                            MetaMask
+                          </p>
+                        </div>
+
+                        <div
+                          class="m_96bdd299 mantine-Grid-col __m__-rfb"
+                          style="text-align: center"
+                        >
+                          <svg
+                            stroke="currentColor"
+                            fill="currentColor"
+                            stroke-width="0"
+                            viewBox="0 0 448 512"
+                            height="10"
+                            width="10"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              d="M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z"
+                            ></path>
+                          </svg>
+                        </div>
+                      </div>
+                    </div>
+                  </button>
                   <button
                     class="mantine-focus-auto ExtensionButton_button__lfkkt m_87cf2631 mantine-UnstyledButton-root"
                     type="button"
@@ -459,7 +522,54 @@
 }
 </style>
 <script setup>
+import outside from '@venegrad/vue3-click-outside'
+import {
+  $off,
+  $on,
+  Events,
+  account,
+  accountDetails,
+  chain,
+  getAvailableChains,
+  connect,
+  disconnect,
+  switchChain,
+  selectChain,
+} from '@kolirt/vue-web3-auth'
+import { useAppStore } from '~/store/app'
+const emit = defineEmits({
+  closeModal: false,
+})
+const appStore = useAppStore()
+const { setIsModal } = appStore
+const loading = reactive({
+  connecting: false,
+  connectingTo: {} || any,
+  switchingTo: {} || any,
+  logouting: false,
+})
+async function isConnectMetamask(chain) {
+  const handler = (state) => {
+    if (!state) {
+      if (chain) {
+        loading.connectingTo[chain.id] = false
+      } else {
+        loading.connecting = false
+      }
+      $off(Events.ModalStateChanged, handler)
+    }
+  }
+  $on(Events.ModalStateChanged, handler)
+  if (chain) {
+    loading.connectingTo[chain.id] = true
+  } else {
+    setIsModal(false)
+    loading.connecting = true
+  }
+  await connect(chain)
+}
+
 function closeModal() {
-  this.$emit('closeModal')
+  emit('closeModal')
 }
 </script>

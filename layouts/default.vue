@@ -12,5 +12,15 @@
     <main class="m_8983817 mantine-AppShell-main" style="padding-right: 0rem">
       <slot />
     </main>
+    <UiModalConnectWallet v-if="appStore.isModal" @closeModal="closeModal" />
   </div>
 </template>
+<script setup>
+import { useAppStore } from '~/store/app'
+const appStore = useAppStore()
+const { setIsModal } = appStore
+function closeModal() {
+  console.log(2)
+  setIsModal(false)
+}
+</script>

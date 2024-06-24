@@ -57,7 +57,7 @@
             font-weight: 500;
             height: calc(2.5rem * var(--mantine-scale));
           "
-          @click="isModalConnect = true"
+          @click.stop="onModalConnect()"
         >
           <span class="m_80f1301b mantine-Button-inner"
             ><span class="m_a74036a mantine-Button-section" data-position="left"
@@ -99,13 +99,13 @@
       </div>
     </div>
   </div>
-  <UiModalConnectWallet v-if="isModalConnect" @closeModal="closeModal" />
 </template>
-
 <script setup>
-let isModalConnect = ref(false)
-function closeModal() {
-  console.log(1421541)
+import { useAppStore } from '~/store/app'
+const appStore = useAppStore()
+const { setIsModal } = appStore
+function onModalConnect() {
+  setIsModal(true)
 }
 </script>
 <style data-mantine-styles="inline">

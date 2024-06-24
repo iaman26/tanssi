@@ -31,6 +31,7 @@
     "@nuxt/ui": "^2.14.2",
     "@pinia/nuxt": "^0.5.1",
     "@use-wagmi/nuxt": "^1.1.8",
+    "@venegrad/vue3-click-outside": "^1.0.1",
     "@wagmi/core": "^1.4.12",
     "apexcharts": "^3.45.1",
     "dayjs": "^1.11.10",
