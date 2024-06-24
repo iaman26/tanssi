@@ -1,7 +1,0 @@
-.arrow {
-    transition: scale 0.1s;
-    @mixin hover {
-        color: white;
-        scale: 1.07;
-    }
-}

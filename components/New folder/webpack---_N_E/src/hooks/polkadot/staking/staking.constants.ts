@@ -1,1 +1,0 @@
-export const EXECUTION_DELAY_SESSIONS = 2;

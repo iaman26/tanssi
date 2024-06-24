@@ -17,6 +17,9 @@ export default defineNuxtConfig({
     families: {},
   },
   css: ['~/assets/css/main.css'],
+  plugins: [
+    "~/plugins/global.js",
+  ],
   ui: {
     global: true,
   },

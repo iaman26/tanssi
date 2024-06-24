@@ -1,1 +1,0 @@
-export { TokenAmountInput } from './TokenAmountInput';

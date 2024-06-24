@@ -1,1 +1,0 @@
-export { IdentityIcon } from './IdentityIcon';

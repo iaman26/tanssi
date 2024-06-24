@@ -1,8 +1,0 @@
-.button {
-    padding: 8px;
-    border-radius: 10px;
-    background-color: var(--mantine-color-dark-6);
-    @mixin hover {
-        background-color: lighten(var(--mantine-color-dark-6), 0.05);
-    }
-}

@@ -34,7 +34,6 @@
         "
       >
         <UiDeploy />
-        <UiDocs />
       </div>
     </div>
   </div>

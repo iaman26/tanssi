@@ -1,7 +1,16 @@
 <template>
-  <div class="layout">
+  <div
+    class="m_89ab340 mantine-AppShell-root"
+    data-layout="alt"
+    style="
+      --app-shell-transition-duration: 200ms;
+      --app-shell-transition-timing-function: ease;
+    "
+  >
     <CommonHeader />
     <CommonSidebar />
-    <slot />
+    <main class="m_8983817 mantine-AppShell-main" style="padding-right: 0rem">
+      <slot />
+    </main>
   </div>
 </template>

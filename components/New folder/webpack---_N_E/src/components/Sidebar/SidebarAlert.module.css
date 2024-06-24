@@ -1,9 +1,0 @@
-.alert {
-    border: 1px solid var(--mantine-color-gray-7);
-    border-radius: rem(8);
-    &:hover {
-        svg {
-            color: white;
-        }
-    }
-}
