@@ -1,0 +1,8 @@
+body {
+    background-color: var(--mantine-color-dark-9);
+}
+
+@font-face {
+    font-family: 'Kilimanjaro';
+    src: url('/fonts/kilimanjaro-sans-tall-round1.otf');
+}

@@ -1,0 +1,2 @@
+import createReactComponent from '../createReactComponent';
+export default createReactComponent('outline', 'arrow-narrow-right', 'IconArrowNarrowRight', [["path",{"d":"M5 12l14 0","key":"svg-0"}],["path",{"d":"M15 16l4 -4","key":"svg-1"}],["path",{"d":"M15 8l4 4","key":"svg-2"}]]);

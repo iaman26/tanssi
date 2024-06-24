@@ -1,0 +1,2 @@
+import createReactComponent from '../createReactComponent';
+export default createReactComponent('outline', 'exclamation-mark', 'IconExclamationMark', [["path",{"d":"M12 19v.01","key":"svg-0"}],["path",{"d":"M12 15v-10","key":"svg-1"}]]);

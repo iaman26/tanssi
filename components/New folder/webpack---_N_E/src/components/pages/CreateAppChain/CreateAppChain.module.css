@@ -1,0 +1,12 @@
+.backButton {
+    padding: 0;
+    color: white;
+    &:disabled,
+    &[data-disabled] {
+        background-color: transparent;
+    }
+    &:hover {
+        text-decoration: underline;
+        background-color: transparent;
+    }
+}

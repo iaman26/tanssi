@@ -1,0 +1,13 @@
+.button {
+    position: relative;
+    border: 1px solid var(--mantine-color-gray-9);
+    border-radius: 10px;
+    background-color: var(--mantine-color-dark-7);
+    @mixin hover {
+        background-color: var(--mantine-color-dark-6);
+    }
+    &:disabled,
+    &[data-disabled] {
+        cursor: not-allowed;
+    }
+}
