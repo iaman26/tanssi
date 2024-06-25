@@ -42,6 +42,9 @@
             <UiBoxFormGasToken />
             <UiBoxFormAccount />
           </template>
+          <template v-else-if="appStore.isTabsBox === 3">
+            <UiBoxFormCustom />
+          </template>
           <div
             class="m_4081bf90 mantine-Group-root"
             style="
