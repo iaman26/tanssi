@@ -1,27 +1,5 @@
 <template>
-  <div
-    class="m_9df02822 mantine-Modal-root"
-    data-centered="true"
-    style="
-      --modal-radius: var(--mantine-radius-lg);
-      --modal-y-offset: 5dvh;
-      --mb-z-index: 201;
-      --mb-padding: var(--mantine-spacing-xl);
-      --modal-size: calc(25rem * var(--mantine-scale));
-    "
-  >
-    <div
-      class="mantine-Modal-overlay m_9814e45f mantine-Overlay-root"
-      data-fixed="true"
-      style="
-        --overlay-bg: rgba(0, 0, 0, 0.9);
-        --overlay-z-index: 201;
-        transition-property: opacity;
-        transition-duration: 200ms;
-        transition-timing-function: ease;
-        opacity: 1;
-      "
-    ></div>
+  <UiModal>
     <div class="m_60c222c7 m_1f958f16 mantine-Modal-inner">
       <section
         class="m_fd1ab0aa m_54c44539 mantine-Modal-content m_1b7284a3 mantine-Paper-root"
@@ -445,7 +423,7 @@
         </div>
       </section>
     </div>
-  </div>
+  </UiModal>
 </template>
 <style scoped>
 .__m__-re2 {

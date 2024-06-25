@@ -51,6 +51,11 @@
     </div>
   </div>
 </template>
+<script setup>
+definePageMeta({
+  layout: 'deploy',
+})
+</script>
 <style scoped>
 .__m__-r2h {
   padding-inline: var(--mantine-spacing-md);
