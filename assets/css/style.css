@@ -12161,7 +12161,7 @@ body {
   transform: scale(0.95);
 }
 
-.ChooseTemplateStep_tab__3YdK3[data-active] {
+.ChooseTemplateStep_tab__3YdK3[data-active='true'] {
   border-color: hsla(0, 0%, 100%, 0.3);
   opacity: 1;
 }

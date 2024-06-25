@@ -20,7 +20,6 @@ import { useAppStore } from '~/store/app'
 const appStore = useAppStore()
 const { setIsModal } = appStore
 function closeModal() {
-  console.log(2)
   setIsModal(false)
 }
 </script>
