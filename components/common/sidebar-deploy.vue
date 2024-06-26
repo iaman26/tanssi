@@ -179,7 +179,7 @@ const listStep = ref([
 ])
 const router = useRouter()
 function goBack() {
-  router.go(-1)
+  router.push('/')
 }
 </script>
 
