@@ -106,8 +106,24 @@
               <span class="m_818e70b mantine-Stepper-stepWrapper"
                 ><span
                   class="NavCreateAppchain_stepIcon__mGFAr m_1959ad01 mantine-Stepper-stepIcon"
-                  :data-progress="appStore.isStep === item.step"
-                  >{{ item.step }}</span
+                  :data-progress="appStore.isStep >= item.step"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="40"
+                    height="40"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="tabler-icon tabler-icon-check"
+                    v-if="appStore.isStep > item.step"
+                  >
+                    <path d="M5 12l5 5l10 -10"></path>
+                  </svg>
+                  {{ appStore.isStep <= item.step ? item.step : '' }} </span
                 ><span
                   class="NavCreateAppchain_verticalSeparator__2oJX4 m_6496b3f3 mantine-Stepper-verticalSeparator"
                 ></span></span
