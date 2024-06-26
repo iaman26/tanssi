@@ -44,17 +44,22 @@
             height: 100%;
           "
         >
-          <UiBoxHeader />
-          <UiBoxContent />
+          <UiBoxFlashboxStep1 v-if="appStore.isStep === 1" />
+          <UiBoxFlashboxStep2 v-if="appStore.isStep === 2" />
+          <UiBoxFlashboxStep3 v-if="appStore.isStep === 3" />
+          <UiBoxFlashboxStep4 v-if="appStore.isStep === 4" />
+          <UiBoxFlashboxStep5 v-if="appStore.isStep === 5" />
         </div>
       </div>
     </div>
   </div>
 </template>
 <script setup>
+import { useAppStore } from '~/store/app'
 definePageMeta({
   layout: 'deploy',
 })
+const appStore = useAppStore()
 </script>
 <style scoped>
 .__m__-r2h {

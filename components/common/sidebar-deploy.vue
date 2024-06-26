@@ -98,14 +98,16 @@
               class="mantine-focus-auto m_833edb7e NavCreateAppchain_step__dZnTE m_cbb57068 mantine-Stepper-step m_87cf2631 mantine-UnstyledButton-root"
               data-icon-position="left"
               type="button"
-              data-progress="true"
               tabindex="-1"
+              :data-progress="appStore.isStep === item.step"
+              v-for="(item, idx) in listStep"
+              :key="idx"
             >
               <span class="m_818e70b mantine-Stepper-stepWrapper"
                 ><span
                   class="NavCreateAppchain_stepIcon__mGFAr m_1959ad01 mantine-Stepper-stepIcon"
-                  data-progress="true"
-                  >1</span
+                  :data-progress="appStore.isStep === item.step"
+                  >{{ item.step }}</span
                 ><span
                   class="NavCreateAppchain_verticalSeparator__2oJX4 m_6496b3f3 mantine-Stepper-verticalSeparator"
                 ></span></span
@@ -115,110 +117,10 @@
                 data-icon-position="left"
                 ><span
                   class="NavCreateAppchain_stepLabel__5NnG2 m_12051f6c mantine-Stepper-stepLabel"
-                  >Template</span
+                  >{{ item.title }}</span
                 ><span
                   class="NavCreateAppchain_stepDescription__Zl7sA m_164eea74 mantine-Stepper-stepDescription"
-                  >Pick and modify template</span
-                ></span
-              ></button
-            ><button
-              class="mantine-focus-auto m_833edb7e NavCreateAppchain_step__dZnTE m_cbb57068 mantine-Stepper-step m_87cf2631 mantine-UnstyledButton-root"
-              data-icon-position="left"
-              type="button"
-              tabindex="-1"
-            >
-              <span class="m_818e70b mantine-Stepper-stepWrapper"
-                ><span
-                  class="NavCreateAppchain_stepIcon__mGFAr m_1959ad01 mantine-Stepper-stepIcon"
-                  >2</span
-                ><span
-                  class="NavCreateAppchain_verticalSeparator__2oJX4 m_6496b3f3 mantine-Stepper-verticalSeparator"
-                ></span></span
-              ><span
-                class="m_1956aa2a mantine-Stepper-stepBody"
-                data-orientation="vertical"
-                data-icon-position="left"
-                ><span
-                  class="NavCreateAppchain_stepLabel__5NnG2 m_12051f6c mantine-Stepper-stepLabel"
-                  >Balances</span
-                ><span
-                  class="NavCreateAppchain_stepDescription__Zl7sA m_164eea74 mantine-Stepper-stepDescription"
-                  >Verify balances</span
-                ></span
-              ></button
-            ><button
-              class="mantine-focus-auto m_833edb7e NavCreateAppchain_step__dZnTE m_cbb57068 mantine-Stepper-step m_87cf2631 mantine-UnstyledButton-root"
-              data-icon-position="left"
-              type="button"
-              tabindex="-1"
-            >
-              <span class="m_818e70b mantine-Stepper-stepWrapper"
-                ><span
-                  class="NavCreateAppchain_stepIcon__mGFAr m_1959ad01 mantine-Stepper-stepIcon"
-                  >3</span
-                ><span
-                  class="NavCreateAppchain_verticalSeparator__2oJX4 m_6496b3f3 mantine-Stepper-verticalSeparator"
-                ></span></span
-              ><span
-                class="m_1956aa2a mantine-Stepper-stepBody"
-                data-orientation="vertical"
-                data-icon-position="left"
-                ><span
-                  class="NavCreateAppchain_stepLabel__5NnG2 m_12051f6c mantine-Stepper-stepLabel"
-                  >Appchain ID</span
-                ><span
-                  class="NavCreateAppchain_stepDescription__Zl7sA m_164eea74 mantine-Stepper-stepDescription"
-                  >Reserve appchain ID</span
-                ></span
-              ></button
-            ><button
-              class="mantine-focus-auto m_833edb7e NavCreateAppchain_step__dZnTE m_cbb57068 mantine-Stepper-step m_87cf2631 mantine-UnstyledButton-root"
-              data-icon-position="left"
-              type="button"
-              tabindex="-1"
-            >
-              <span class="m_818e70b mantine-Stepper-stepWrapper"
-                ><span
-                  class="NavCreateAppchain_stepIcon__mGFAr m_1959ad01 mantine-Stepper-stepIcon"
-                  >4</span
-                ><span
-                  class="NavCreateAppchain_verticalSeparator__2oJX4 m_6496b3f3 mantine-Stepper-verticalSeparator"
-                ></span></span
-              ><span
-                class="m_1956aa2a mantine-Stepper-stepBody"
-                data-orientation="vertical"
-                data-icon-position="left"
-                ><span
-                  class="NavCreateAppchain_stepLabel__5NnG2 m_12051f6c mantine-Stepper-stepLabel"
-                  >Appchain Data</span
-                ><span
-                  class="NavCreateAppchain_stepDescription__Zl7sA m_164eea74 mantine-Stepper-stepDescription"
-                  >Generate appchain data</span
-                ></span
-              ></button
-            ><button
-              class="mantine-focus-auto m_833edb7e NavCreateAppchain_step__dZnTE m_cbb57068 mantine-Stepper-step m_87cf2631 mantine-UnstyledButton-root"
-              data-icon-position="left"
-              type="button"
-              tabindex="-1"
-            >
-              <span class="m_818e70b mantine-Stepper-stepWrapper"
-                ><span
-                  class="NavCreateAppchain_stepIcon__mGFAr m_1959ad01 mantine-Stepper-stepIcon"
-                  >5</span
-                ><span
-                  class="NavCreateAppchain_verticalSeparator__2oJX4 m_6496b3f3 mantine-Stepper-verticalSeparator"
-                ></span></span
-              ><span
-                class="m_1956aa2a mantine-Stepper-stepBody"
-                data-orientation="vertical"
-                data-icon-position="left"
-                ><span
-                  class="NavCreateAppchain_stepLabel__5NnG2 m_12051f6c mantine-Stepper-stepLabel"
-                  >Register</span
-                ><span
-                  class="NavCreateAppchain_stepDescription__Zl7sA m_164eea74 mantine-Stepper-stepDescription"
-                  >Register appchain</span
+                  >{{ item.description }}</span
                 ></span
               >
             </button>
@@ -229,7 +131,36 @@
   </div>
 </template>
 <script setup>
+import { useAppStore } from '~/store/app'
+const appStore = useAppStore()
 import { useRouter } from 'vue-router'
+const listStep = ref([
+  {
+    title: 'Template',
+    description: 'Pick and modify template',
+    step: 1,
+  },
+  {
+    title: 'Balances',
+    description: 'Verify balances',
+    step: 2,
+  },
+  {
+    title: 'Appchain ID',
+    description: 'Reserve appchain ID',
+    step: 3,
+  },
+  {
+    title: 'Appchain Data',
+    description: 'Generate appchain data',
+    step: 4,
+  },
+  {
+    title: 'Register',
+    description: 'Register appchain',
+    step: 5,
+  },
+])
 const router = useRouter()
 function goBack() {
   router.go(-1)

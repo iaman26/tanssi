@@ -5,14 +5,18 @@ export const useAppStore = defineStore({
   state: (): any => ({
     isModal: false,
     isTabsBox: 1,
+    isStep: 1,
   }),
 
   actions: {
     setIsModal(value: boolean) {
       this.isModal = value
     },
-    setTabBox(value: boolean) {
+    setTabBox(value: Number) {
       this.isTabsBox = value
+    },
+    setIsStep(value: Number) {
+      this.isStep = value
     },
   },
 })

@@ -17,24 +17,18 @@ export default defineNuxtConfig({
     families: {},
   },
   css: ['~/assets/css/main.css'],
-  plugins: [
-    "~/plugins/global.js",
-  ],
+  plugins: ['~/plugins/global.js'],
   ui: {
     global: true,
   },
   svgo: {
-    autoImportPath: './assets/icons',
+    autoImportPath: './assets/icon',
     componentPrefix: 'Icon',
   },
   imports: {
     autoImport: true,
   },
-  components: [
-    { path: '~/components/charts', pathPrefix: false },
-    { path: '~/components/pages', prefix: '' },
-    '~/components',
-  ],
+  components: ['~/components'],
   app: {
     pageTransition: { name: 'page', mode: 'out-in' },
     head: {

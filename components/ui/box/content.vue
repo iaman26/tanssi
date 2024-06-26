@@ -55,7 +55,7 @@
             "
           >
             <button
-              class="mantine-focus-auto mantine-active mantine-Button-root m_87cf2631 mantine-UnstyledButton-root"
+              class="mantine-focus-auto mantine-active m_77c9d27d mantine-Button-root m_87cf2631 mantine-UnstyledButton-root"
               data-variant="light"
               data-size="md"
               data-with-left-section="true"
@@ -72,6 +72,7 @@
                 --button-bd: calc(0.0625rem * var(--mantine-scale)) solid
                   transparent;
                 font-weight: 500;
+                background: #17252b;
               "
             >
               <span class="m_80f1301b mantine-Button-inner"
@@ -94,29 +95,30 @@
                     <path d="M5 12l6 6"></path>
                     <path d="M5 12l6 -6"></path></svg></span
                 ><span class="m_811560b9 mantine-Button-label">Back</span></span
-              ></button
-            ><button
-              class="mantine-focus-auto ActionButton_button__aljz0 mantine-Button-root m_87cf2631 mantine-UnstyledButton-root"
-              data-variant="light"
+              >
+            </button>
+            <button
+              class="mantine-focus-auto mantine-active ActionButton_button__aljz0 m_77c9d27d mantine-Button-root m_87cf2631 mantine-UnstyledButton-root"
+              data-variant="filled"
               data-size="md"
-              data-disabled="true"
               data-with-right-section="true"
               type="button"
-              disabled=""
               style="
                 color: var(--mantine-color-white);
-                opacity: 0.5;
+                opacity: 1;
                 --button-height: var(--button-height-md);
                 --button-padding-x: var(--button-padding-x-md);
                 --button-fz: var(--mantine-font-size-md);
-                --button-bg: var(--mantine-color-tanssiTeal-light);
-                --button-hover: var(--mantine-color-tanssiTeal-light-hover);
-                --button-color: var(--mantine-color-tanssiTeal-light-color);
+                --button-bg: var(--mantine-color-tanssiTeal-filled);
+                --button-hover: var(--mantine-color-tanssiTeal-filled-hover);
+                --button-color: var(--mantine-color-white);
                 --button-bd: calc(0.0625rem * var(--mantine-scale)) solid
                   transparent;
                 font-weight: 500;
                 min-width: calc(7.75rem * var(--mantine-scale));
+                border: 1px solid rgba(255, 255, 255, 0.2);
               "
+              @click="nextStep(2)"
             >
               <span class="m_80f1301b mantine-Button-inner"
                 ><span class="m_811560b9 mantine-Button-label">Continue</span
@@ -144,26 +146,13 @@
         </div>
       </form>
     </div>
-    <div
-      class="m_b0c91715 mantine-Tabs-panel"
-      data-orientation="vertical"
-      role="tabpanel"
-      id="mantine-1vwa68d9d-panel-Substrate"
-      aria-labelledby="mantine-1vwa68d9d-tab-Substrate"
-      style="position: relative; display: none"
-    ></div>
-    <div
-      class="m_b0c91715 mantine-Tabs-panel"
-      data-orientation="vertical"
-      role="tabpanel"
-      id="mantine-1vwa68d9d-panel-Custom"
-      aria-labelledby="mantine-1vwa68d9d-tab-Custom"
-      style="position: relative; display: none"
-    ></div>
   </div>
 </template>
 <script setup>
 import { useAppStore } from '~/store/app'
 const appStore = useAppStore()
-const { setTabBox } = appStore
+const { setIsStep } = appStore
+function nextStep(value) {
+  setIsStep(value)
+}
 </script>
