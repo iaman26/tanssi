@@ -13,13 +13,18 @@
       <slot />
     </main>
     <UiModalConnectWallet v-if="appStore.isModal" @closeModal="closeModal" />
+    <UiModalConnectWallet
+      v-if="appStore.isModalConnect2"
+      @closeModal="closeModal"
+    />
   </div>
 </template>
 <script setup>
 import { useAppStore } from '~/store/app'
 const appStore = useAppStore()
-const { setIsModal } = appStore
+const { setIsModal, setIsModalConnect2 } = appStore
 function closeModal() {
   setIsModal(false)
+  setIsModalConnect2(false)
 }
 </script>
