@@ -22,6 +22,7 @@
       <button
         class="mantine-focus-auto m_fea6bf1a mantine-Burger-root m_87cf2631 mantine-UnstyledButton-root mantine-hidden-from-md"
         type="button"
+        @click="setIsMenu(true)"
       >
         <div
           class="m_d4fb9cad mantine-Burger-burger"
@@ -103,7 +104,8 @@
 <script setup>
 import { useAppStore } from '~/store/app'
 const appStore = useAppStore()
-const { setIsModal } = appStore
+const { setIsModal, setIsMenu } = appStore
+const props = defineProps(['windowWidth'])
 function onModalConnect() {
   setIsModal(true)
 }

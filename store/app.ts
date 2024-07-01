@@ -7,6 +7,8 @@ export const useAppStore = defineStore({
     isModalConnect2: false,
     isTabsBox: 1,
     isStep: 1,
+    windowWidth: window?.innerWidth,
+    isMenu: false,
   }),
 
   actions: {
@@ -21,6 +23,12 @@ export const useAppStore = defineStore({
     },
     setIsStep(value: Number) {
       this.isStep = value
+    },
+    setIsWindowWidth(value: Number) {
+      this.windowWidth = value
+    },
+    setIsMenu(value: boolean) {
+      this.isMenu = value
     },
   },
 })

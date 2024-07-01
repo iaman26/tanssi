@@ -19,7 +19,20 @@
       data-nimg="1"
       class="m_9e117634 mantine-Image-root"
       src="~/assets/img/banner_2.webp"
+      style="color: transparent; width: 100%; height: auto"
+      v-if="appStore.windowWidth > 990" />
+    <img
+      v-else
+      alt="Let's Forkin Dance banner"
+      fetchpriority="high"
+      width="1536"
+      height="1024"
+      decoding="async"
+      data-nimg="1"
+      class="m_9e117634 mantine-Image-root"
+      src="~/assets/img/banner_3.webp"
       style="color: transparent; width: 100%; height: auto" />
+
     <button
       class="mantine-focus-auto mantine-active m_8d3f4000 mantine-ActionIcon-root m_87cf2631 mantine-UnstyledButton-root"
       type="button"
@@ -95,6 +108,10 @@
     of appchains
   </p>
 </template>
+<script setup>
+import { useAppStore } from '~/store/app'
+const appStore = useAppStore()
+</script>
 <style scoped>
 .__m__-ro9f {
   --col-flex-grow: auto;

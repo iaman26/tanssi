@@ -2346,6 +2346,7 @@ section.calc .calc__list {
     grid-template-columns: repeat(1, 1fr);
   }
 }
+
 /*# sourceMappingURL=style.min.css.map */
 .m_e4d36c9b {
   min-width: calc(12.5rem * var(--mantine-scale));
@@ -4067,7 +4068,11 @@ body {
   min-height: 100dvh;
   transition-property: padding;
 }
-
+@media screen and (max-width: 990px) {
+  .m_8983817 {
+    padding-inline-start: 0;
+  }
+}
 .m_3840c879,
 .m_3b16f56b {
   position: fixed;
@@ -4937,7 +4942,7 @@ fieldset:disabled .m_d3ea56bb {
   display: block;
   width: var(--burger-size);
   height: calc(var(--burger-size) / 12);
-  background-color: var(--burger-color);
+  background-color: #fff;
   outline: calc(0.0625rem * var(--mantine-scale)) solid transparent;
   transition-property: background-color, transform;
   transition-duration: var(--burger-transition-duration, 0.3s);
