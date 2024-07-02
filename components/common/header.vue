@@ -8,6 +8,7 @@
       height: var(--header-height);
       right: 0rem;
     "
+    :data-with-border="appStore.windowWidth <= 990"
   >
     <div
       class="m_4081bf90 mantine-Group-root"

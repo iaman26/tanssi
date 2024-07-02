@@ -2,6 +2,11 @@
   <div
     class="m_45252eee mantine-AppShell-navbar Nav_nav__W3s5_"
     style="--app-shell-navbar-z-index: calc(100 + 1)"
+    :style="{
+      width: appStore.isMenu ? '100%' : 'auto',
+      display:
+        appStore.windowWidth > 990 ? 'flex' : appStore.isMenu ? 'flex' : 'none',
+    }"
   >
     <button
       class="mantine-focus-auto m_fea6bf1a mantine-Burger-root m_87cf2631 mantine-UnstyledButton-root mantine-hidden-from-md"
@@ -13,12 +18,16 @@
         top: 30px;
         left: calc(1.25rem * var(--mantine-scale));
       "
+      @click="setIsMenu(false)"
+      v-if="appStore.windowWidth <= 990"
     >
       <div
         class="m_d4fb9cad mantine-Burger-burger"
         data-reduce-motion="true"
-      ></div></button
-    ><a href="/"
+        data-opened="true"
+      ></div>
+    </button>
+    <a href="/"
       ><img
         alt="Tanssi"
         fetchpriority="high"
@@ -721,5 +730,8 @@
 </template>
 <script setup>
 import { useRouter } from 'vue-router'
+import { useAppStore } from '~/store/app'
+const appStore = useAppStore()
+const { setIsMenu } = appStore
 const router = useRouter()
 </script>

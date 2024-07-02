@@ -7,7 +7,7 @@ export const useAppStore = defineStore({
     isModalConnect2: false,
     isTabsBox: 1,
     isStep: 1,
-    windowWidth: window?.innerWidth,
+    windowWidth: 1140,
     isMenu: false,
   }),
 
