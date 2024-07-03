@@ -59,6 +59,7 @@
             font-weight: 500;
             height: calc(2.5rem * var(--mantine-scale));
           "
+          v-if="!account.connected"
           @click.stop="onModalConnect()"
         >
           <span class="m_80f1301b mantine-Button-inner"
@@ -98,12 +99,118 @@
                 <path d="M6 9l6 6l6 -6"></path></svg></span
           ></span>
         </button>
+        <div v-else class="wallet relative">
+          <img class="h-10 w-10" src="../../assets/img/avatar.svg" alt="" />
+          <div
+            class="absolute right-0 top-0 z-10 inline-flex w-[285px] flex-col items-start justify-start gap-4 rounded-xl bg-gray-900 p-4"
+          >
+            <div class="flex">
+              <img
+                class="h-10 w-10"
+                src="../../assets/img/avatar1.svg"
+                alt=""
+              />
+              <div class="ml-4">
+                <div class="mb-1 text-xs font-normal leading-none">
+                  {{ account.shortAddress }}
+                </div>
+                <div class="text-sm font-semibold leading-normal text-blue-500">
+                  View Profile
+                </div>
+              </div>
+            </div>
+            <div
+              class="inline-flex w-full flex-col items-center justify-start gap-2 rounded-xl bg-gray-800 px-4 pb-3 pt-4"
+            >
+              <div
+                class="inline-flex items-center justify-between self-stretch"
+              >
+                <div class="flex items-center justify-start gap-1">
+                  <img class="h-6 w-6" src="../../img/busd.svg" alt="" />
+                  <div class="text-sm font-semibold leading-normal">BUSD</div>
+                </div>
+                <div class="text-right text-sm font-semibold leading-normal">
+                  10,2 BUSD
+                </div>
+              </div>
+              <div
+                class="inline-flex items-center justify-center gap-2 self-stretch rounded-xl py-2"
+              >
+                <div class="text-sm font-bold leading-normal text-blue-500">
+                  Add funds with card
+                </div>
+              </div>
+            </div>
+            <div class="w-full">
+              <div class="mb-3 flex py-2">
+                <img
+                  class="mr-2 h-5 w-5"
+                  src="../../assets/img/mynft.svg"
+                  alt=""
+                />
+                <div class="w-[209px] text-sm font-normal leading-normal">
+                  My NFTs
+                </div>
+              </div>
+              <div class="mb-3 flex py-2">
+                <img
+                  class="mr-2 h-5 w-5"
+                  src="../../assets/img/Collection.svg"
+                  alt=""
+                />
+                <div class="w-[209px] text-sm font-normal leading-normal">
+                  My Collection
+                </div>
+              </div>
+              <div class="mb-3 flex py-2">
+                <img
+                  class="mr-2 h-5 w-5"
+                  src="../../assets/img/Coupon.svg"
+                  alt=""
+                />
+                <div class="w-[209px] text-sm font-normal leading-normal">
+                  My Coupon
+                </div>
+              </div>
+              <div class="mb-3 flex py-2">
+                <img
+                  class="mr-2 h-5 w-5"
+                  src="../../assets/img/setting.svg"
+                  alt=""
+                />
+                <div class="w-[209px] text-sm font-normal leading-normal">
+                  Setting
+                </div>
+              </div>
+            </div>
+            <button
+              type="button"
+              @click="onLogout"
+              class="mt-4 w-full py-2 text-center text-sm font-bold leading-normal text-blue-500"
+            >
+              {{ loading.logouting ? 'Logouting...' : 'Logout' }}
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </template>
 <script setup>
 import { useAppStore } from '~/store/app'
+import {
+  $off,
+  $on,
+  Events,
+  account,
+  accountDetails,
+  chain,
+  getAvailableChains,
+  connect,
+  disconnect,
+  switchChain,
+  selectChain,
+} from '@kolirt/vue-web3-auth'
 const appStore = useAppStore()
 const { setIsModal, setIsMenu } = appStore
 const props = defineProps(['windowWidth'])
