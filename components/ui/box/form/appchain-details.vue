@@ -136,40 +136,11 @@
           flex-direction: row;
         "
       >
-        <div
-          class="m_46b77525 mantine-InputWrapper-root mantine-TextInput-root"
-          style="width: 100%"
-        >
-          <label
-            class="m_8fdc1311 mantine-InputWrapper-label mantine-TextInput-label"
-            for="mantine-nn9dul00f"
-            id="mantine-nn9dul00f-label"
-            style="color: white; font-size: 16px"
-            >Name<span
-              class="mantine-focus-auto m_b6d8b162 mantine-Text-root"
-              style="color: var(--mantine-color-red-9)"
-            >
-              *</span
-            ></label
-          >
-          <div
-            class="m_6c018570 mantine-Input-wrapper mantine-TextInput-wrapper"
-            data-variant="filled"
-            style="--input-radius: var(--mantine-radius-md)"
-          >
-            <input
-              class="m_8fb7ebe7 mantine-Input-input mantine-TextInput-input"
-              data-variant="filled"
-              color="white"
-              placeholder="Chain name"
-              data-path="name"
-              aria-invalid="false"
-              id="mantine-nn9dul00f"
-              value=""
-              style="background-color: rgb(9, 11, 18); color: white"
-            />
-          </div>
-        </div>
+        <UiTextForm
+          :title="'name'"
+          :placeholder="'Chain name'"
+          v-model="name"
+        />
         <div
           class="m_e2f5cd4e m_46b77525 mantine-InputWrapper-root mantine-NumberInput-root"
           style="width: 100%"
@@ -250,6 +221,7 @@
 <script setup>
 import { useAppStore } from '~/store/app'
 const appStore = useAppStore()
+let name = ref('')
 </script>
 
 <style scoped>
