@@ -59,7 +59,7 @@
             font-weight: 500;
             height: calc(2.5rem * var(--mantine-scale));
           "
-          v-if="!account.connected"
+          v-if="!account?.connected"
           @click.stop="onModalConnect()"
         >
           <span class="m_80f1301b mantine-Button-inner"
@@ -99,10 +99,16 @@
                 <path d="M6 9l6 6l6 -6"></path></svg></span
           ></span>
         </button>
-        <div v-else class="wallet relative">
-          <img class="h-10 w-10" src="../../assets/img/avatar.svg" alt="" />
+        <div v-else class="wallet relative mr-8 text-white">
+          <img
+            class="h-10 w-10"
+            @click="showWallet()"
+            src="../../assets/img/avatar.svg"
+            alt=""
+          />
           <div
-            class="absolute right-0 top-0 z-10 inline-flex w-[285px] flex-col items-start justify-start gap-4 rounded-xl bg-gray-900 p-4"
+            v-if="isShowWallet"
+            class="absolute -right-6 top-14 z-10 inline-flex w-[285px] flex-col items-start justify-start gap-4 rounded-xl bg-gray-900 p-4"
           >
             <div class="flex">
               <img
@@ -126,7 +132,7 @@
                 class="inline-flex items-center justify-between self-stretch"
               >
                 <div class="flex items-center justify-start gap-1">
-                  <img class="h-6 w-6" src="../../img/busd.svg" alt="" />
+                  <img class="h-6 w-6" src="../../assets/img/busd.svg" alt="" />
                   <div class="text-sm font-semibold leading-normal">BUSD</div>
                 </div>
                 <div class="text-right text-sm font-semibold leading-normal">
@@ -186,7 +192,7 @@
             <button
               type="button"
               @click="onLogout"
-              class="mt-4 w-full py-2 text-center text-sm font-bold leading-normal text-blue-500"
+              class="w-full py-2 text-center text-sm font-bold leading-normal text-blue-500"
             >
               {{ loading.logouting ? 'Logouting...' : 'Logout' }}
             </button>
@@ -211,11 +217,45 @@ import {
   switchChain,
   selectChain,
 } from '@kolirt/vue-web3-auth'
+import outside from '@venegrad/vue3-click-outside'
 const appStore = useAppStore()
-const { setIsModal, setIsMenu } = appStore
+const { setIsModal, setIsMenu, setAccount } = appStore
 const props = defineProps(['windowWidth'])
+import { getAccount } from '@wagmi/core'
+const loading = reactive({
+  connecting: false,
+  connectingTo: {} || any,
+  switchingTo: {} || any,
+  logouting: false,
+})
+watch(
+  account,
+  (val) => {
+    setAccount(getAccount())
+  },
+  { deep: true }
+)
+const isShowWallet = ref(false)
+function showWallet() {
+  isShowWallet.value = !isShowWallet.value
+}
 function onModalConnect() {
   setIsModal(true)
+}
+async function onLogout() {
+  loading.logouting = true
+  const handler = () => {
+    loading.logouting = false
+    $off(Events.Disconnected, handler)
+  }
+
+  $on(Events.Disconnected, handler)
+
+  await disconnect().catch(() => {
+    loading.logouting = false
+    $off(Events.Disconnected, handler)
+    isShowWallet.value = false
+  })
 }
 </script>
 <style data-mantine-styles="inline">

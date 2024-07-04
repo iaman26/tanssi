@@ -9,6 +9,7 @@ export const useAppStore = defineStore({
     isStep: 1,
     windowWidth: 1140,
     isMenu: false,
+    isAccount: {},
   }),
 
   actions: {
@@ -29,6 +30,9 @@ export const useAppStore = defineStore({
     },
     setIsMenu(value: boolean) {
       this.isMenu = value
+    },
+    setAccount(value: string) {
+      this.isAccount = value
     },
   },
 })
