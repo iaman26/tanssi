@@ -99,7 +99,7 @@
                 <path d="M6 9l6 6l6 -6"></path></svg></span
           ></span>
         </button>
-        <div v-else class="wallet relative mr-8 text-white">
+        <div v-else class="wallet relative text-white md:mr-8">
           <img
             class="h-10 w-10"
             @click="showWallet()"
@@ -110,7 +110,7 @@
             v-if="isShowWallet"
             class="absolute -right-6 top-14 z-10 inline-flex w-[285px] flex-col items-start justify-start gap-4 rounded-xl bg-gray-900 p-4"
           >
-            <div class="flex">
+            <div class="relative flex w-full">
               <img
                 class="h-10 w-10"
                 src="../../assets/img/avatar1.svg"
@@ -124,6 +124,21 @@
                   View Profile
                 </div>
               </div>
+              <button @click="showWallet()" class="absolute right-2 top-0">
+                <svg
+                  stroke="currentColor"
+                  fill="currentColor"
+                  stroke-width="0"
+                  viewBox="0 0 512 512"
+                  height="20"
+                  width="20"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M400 145.49 366.51 112 256 222.51 145.49 112 112 145.49 222.51 256 112 366.51 145.49 400 256 289.49 366.51 400 400 366.51 289.49 256 400 145.49z"
+                  ></path>
+                </svg>
+              </button>
             </div>
             <div
               class="inline-flex w-full flex-col items-center justify-start gap-2 rounded-xl bg-gray-800 px-4 pb-3 pt-4"
