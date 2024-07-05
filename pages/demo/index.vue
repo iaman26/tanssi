@@ -32,81 +32,7 @@
           --stack-justify: flex-start;
         "
       >
-        <a
-          class="mantine-focus-auto m_849cf0da m_b6d8b162 mantine-Text-root mantine-Anchor-root"
-          data-underline="hover"
-          href="https://lfd.tanssi.network/"
-          target="_blank"
-          style="
-            position: relative;
-            display: block;
-            width: 100%;
-            color: var(--mantine-color-anchor);
-          "
-          ><img
-            alt="Let's Forkin Dance banner"
-            fetchpriority="high"
-            width="1536"
-            height="1024"
-            decoding="async"
-            data-nimg="1"
-            class="m_9e117634 mantine-Image-root"
-            src="../../assets/img/banner_2.webp"
-            style="color: transparent; width: 100%; height: auto" />
-          <button
-            class="mantine-focus-auto mantine-active m_8d3f4000 mantine-ActionIcon-root m_87cf2631 mantine-UnstyledButton-root"
-            type="button"
-            style="
-              --ai-color: var(--mantine-color-white);
-              position: absolute;
-              top: 3%;
-              right: 2%;
-              background-color: transparent;
-            "
-          >
-            <span class="m_8d3afb97 mantine-ActionIcon-icon"
-              ><svg
-                stroke="currentColor"
-                fill="currentColor"
-                stroke-width="0"
-                viewBox="0 0 512 512"
-                height="20"
-                width="20"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M400 145.49 366.51 112 256 222.51 145.49 112 112 145.49 222.51 256 112 366.51 145.49 400 256 289.49 366.51 400 400 366.51 289.49 256 400 145.49z"
-                ></path>
-              </svg>
-            </span>
-          </button>
-          <div
-            style="
-              position: absolute;
-              bottom: 3%;
-              right: 2%;
-              background-color: transparent;
-              color: rgb(255, 255, 255);
-            "
-          >
-            <svg
-              stroke="currentColor"
-              fill="currentColor"
-              stroke-width="0"
-              viewBox="0 0 512 512"
-              height="20"
-              width="20"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                fill="none"
-                stroke-linecap="square"
-                stroke-miterlimit="10"
-                stroke-width="48"
-                d="m268 112 144 144-144 144m124-144H100"
-              ></path>
-            </svg></div
-        ></a>
+        <UiIntroduce @CloseIntroduce="CloseIntroduce" v-if="!introduce" />
         <h1
           class="m_8a5d1357 mantine-Title-root"
           data-order="1"
@@ -219,8 +145,10 @@
                     stroke-linejoin="round"
                     class="tabler-icon tabler-icon-chevron-down"
                   >
-                    <path d="M6 9l6 6l6 -6"></path></svg></span
-              ></span>
+                    <path d="M6 9l6 6l6 -6"></path>
+                  </svg>
+                </span>
+              </span>
             </button>
           </div>
         </div>
@@ -1649,8 +1577,9 @@
                             d="M12 6h-6a2 2 0 0 0 -2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-6"
                           ></path>
                           <path d="M11 13l9 -9"></path>
-                          <path d="M15 4h5v5"></path></svg
-                      ></a>
+                          <path d="M15 4h5v5"></path>
+                        </svg>
+                      </a>
                     </p>
                     <div
                       class="m_4081bf90 mantine-Group-root"
@@ -1713,8 +1642,9 @@
                             ></path>
                             <path
                               d="M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1"
-                            ></path></svg
-                        ></span>
+                            ></path>
+                          </svg>
+                        </span>
                       </button>
                     </div>
                   </div>
@@ -1854,8 +1784,9 @@
                           d="M12 6h-6a2 2 0 0 0 -2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-6"
                         ></path>
                         <path d="M11 13l9 -9"></path>
-                        <path d="M15 4h5v5"></path></svg
-                    ></a>
+                        <path d="M15 4h5v5"></path>
+                      </svg>
+                    </a>
                   </div>
                 </div>
                 <div
@@ -1932,8 +1863,9 @@
                           ></path>
                           <path
                             d="M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1"
-                          ></path></svg
-                      ></span>
+                          ></path>
+                        </svg>
+                      </span>
                     </button>
                   </div>
                 </div>
@@ -2011,8 +1943,9 @@
                           ></path>
                           <path
                             d="M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1"
-                          ></path></svg
-                      ></span>
+                          ></path>
+                        </svg>
+                      </span>
                     </button>
                   </div>
                 </div>
@@ -2300,6 +2233,12 @@
     </div>
   </div>
 </template>
+<script setup>
+const introduce = useCookie('introduce')
+function CloseIntroduce() {
+  introduce.value = true
+}
+</script>
 <style scoped>
 .__m__-r2h {
   padding-inline: var(--mantine-spacing-md);
