@@ -42,7 +42,7 @@
         "
       >
         <button
-          class="mantine-focus-auto mantine-active m_77c9d27d mantine-Button-root m_87cf2631 mantine-UnstyledButton-root __m__-r2b"
+          class="mantine-focus-auto mantine-active m_77c9d27d mantine-Button-root m_87cf2631 mantine-UnstyledButton-root pd-inline"
           data-size="md"
           data-with-left-section="true"
           data-with-right-section="true"
@@ -274,11 +274,11 @@ async function onLogout() {
 }
 </script>
 <style data-mantine-styles="inline">
-.__m__-r2b {
+.pd-inline {
   padding-inline: var(--mantine-spacing-sm);
 }
 @media (min-width: 48em) {
-  .__m__-r2b {
+  .pd-inline {
     padding-inline: var(--mantine-spacing-lg);
   }
 }

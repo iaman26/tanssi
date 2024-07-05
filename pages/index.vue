@@ -12,7 +12,7 @@
     "
   >
     <div
-      class="m_6d731127 mantine-Stack-root __m__-r2h"
+      class="m_6d731127 mantine-Stack-root pd-inline"
       style="
         --stack-gap: 0rem;
         --stack-align: stretch;
@@ -40,11 +40,11 @@
   </div>
 </template>
 <style scoped>
-.__m__-r2h {
+.pd-inline {
   padding-inline: var(--mantine-spacing-md);
 }
 @media (min-width: 62em) {
-  .__m__-r2h {
+  .pd-inline {
     padding-inline: var(--mantine-spacing-xl);
   }
 }

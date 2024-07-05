@@ -1,6 +1,6 @@
 <template>
   <div
-    class="__m__-rosg"
+    class="pd"
     style="border-radius: 20px; background: var(--mantine-color-dark-8)"
   >
     <fieldset
@@ -288,11 +288,11 @@ import { useAppStore } from '~/store/app'
 const appStore = useAppStore()
 </script>
 <style scoped>
-.__m__-rosg {
+.pd {
   padding: calc(0.9375rem * var(--mantine-scale));
 }
 @media (min-width: 48em) {
-  .__m__-rosg {
+  .pd {
     padding: calc(1.875rem * var(--mantine-scale));
   }
 }

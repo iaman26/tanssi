@@ -2951,27 +2951,6 @@ body {
   }
 }
 
-.m_b34414df {
-  display: inline-block;
-}
-
-.m_b34414df,
-.m_b34414df:after {
-  width: var(--loader-size);
-  height: var(--loader-size);
-}
-
-.m_b34414df:after {
-  content: '';
-  display: block;
-  border-radius: calc(625rem * var(--mantine-scale));
-  border-width: calc(var(--loader-size) / 8);
-  border-style: solid;
-  border-color: var(--loader-color) var(--loader-color) var(--loader-color)
-    transparent;
-  animation: m_f8e89c4b 1.2s linear infinite;
-}
-
 .m_8d3f4000 {
   --ai-size-xs: calc(1.125rem * var(--mantine-scale));
   --ai-size-sm: calc(1.375rem * var(--mantine-scale));

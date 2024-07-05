@@ -1,6 +1,6 @@
 <template>
   <div
-    class="__m__-rotj"
+    class="pd"
     style="border-radius: 20px; background: var(--mantine-color-dark-8)"
   >
     <fieldset
@@ -91,11 +91,11 @@
   </div>
 </template>
 <style scoped>
-.__m__-rotj {
+.pd {
   padding: calc(0.9375rem * var(--mantine-scale));
 }
 @media (min-width: 48em) {
-  .__m__-rotj {
+  .pd {
     padding: calc(1.875rem * var(--mantine-scale));
   }
 }
