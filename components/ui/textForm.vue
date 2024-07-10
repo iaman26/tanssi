@@ -13,7 +13,7 @@
       <span
         class="mantine-focus-auto m_b6d8b162 mantine-Text-root"
         style="color: var(--mantine-color-red-9)"
-        v-if="!props.modelValue || (requireError && !onInput)"
+        v-if="validateErr || props.modelValue.length === 0"
       >
         *</span
       >
@@ -35,12 +35,13 @@
       </svg>
     </label>
     <div
-      class="m_6c018570 mantine-Input-wrapper mantine-TextInput-wrapper"
+      class="m_6c018570 mantine-Input-wrapper mantine-TextInput-wrapper rounded"
       data-variant="filled"
       style="--input-radius: var(--mantine-radius-md)"
+      :class="validateErr ? 'border-1 border-rose-600' : ''"
     >
       <input
-        class="m_8fb7ebe7 mantine-Input-input mantine-TextInput-input border-2 border-rose-600"
+        class="m_8fb7ebe7 mantine-Input-input mantine-TextInput-input"
         data-variant="filled"
         color="white"
         :placeholder="props.placeholder"
@@ -49,16 +50,17 @@
         id="mantine-nn9dul00f"
         :value="props.modelValue"
         @input="emit('update:modelValue', $event.target.value)"
+        :type="props.type"
         :style="{
           'background-color': 'rgb(9, 11, 18)',
-          color: requireError ? 'red' : 'white',
+          color: props.modelValue.length === 0 && validateErr ? 'red' : 'white',
         }"
         @blur="handleBlur()"
         @focus="focusInput()"
       />
     </div>
-    <p v-if="requireError" class="mt-2 text-sm text-red-600">
-      String must contain at least 3 character(s)
+    <p class="mt-2 h-5 text-sm text-red-600">
+      {{ messageErr }}
     </p>
   </div>
 </template>
@@ -80,10 +82,51 @@ const props = defineProps({
     type: Boolean,
     required: false,
   },
+  minLength: {
+    type: Number,
+    default: 0,
+    required: false,
+  },
+  maxLength: {
+    type: Number,
+    default: 0,
+    required: false,
+  },
+  type: {
+    type: String,
+    default: 'text',
+    required: false,
+  },
 })
 const emit = defineEmits(['update:modelValue'])
 let requireError = ref(false)
+let minLengthError = ref(false)
+let maxLengthError = ref(false)
 let onInput = ref(false)
+const validateErr = computed(() => {
+  if (
+    (requireError.value || minLengthError.value || maxLengthError.value) &&
+    !onInput.value
+  ) {
+    return true
+  }
+})
+const messageErr = computed(() => {
+  switch (true) {
+    case requireError.value:
+      return `String must contain at least ${props?.minLength} character(s)`
+      break
+    case minLengthError.value:
+      return `String must contain at least ${props?.minLength} character(s)`
+      break
+    case maxLengthError.value:
+      return `String must contain at most ${props?.maxLength} character(s)`
+      break
+    default:
+      return
+      break
+  }
+})
 watch(
   () => props.modelValue,
   (first, second) => {
@@ -97,8 +140,19 @@ function focusInput() {
 }
 function handleBlur() {
   onInput.value = false
-  if (props.modelValue.length < 3) {
+  if (props?.modelValue.length === 0 && props?.isRequire) {
     requireError.value = true
+  } else if (props?.modelValue.length < props?.minLength) {
+    minLengthError.value = true
+  } else if (
+    props?.modelValue.length > props?.maxLength &&
+    props?.maxLengthError != 0
+  ) {
+    maxLengthError.value = true
+  } else {
+    requireError.value = false
+    minLengthError.value = false
+    maxLengthError.value = false
   }
 }
 </script>

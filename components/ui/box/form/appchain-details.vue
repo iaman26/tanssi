@@ -139,81 +139,20 @@
         <UiTextForm
           :title="'name'"
           :placeholder="'Chain name'"
-          v-model="name"
+          :isRequire="true"
+          :maxLength="6"
+          :minLength="3"
+          v-model="form.name"
         />
-        <div
-          class="m_e2f5cd4e m_46b77525 mantine-InputWrapper-root mantine-NumberInput-root"
-          style="width: 100%"
+        <UiTextForm
           v-if="appStore.isTabsBox === 1"
-        >
-          <label
-            class="m_8fdc1311 mantine-InputWrapper-label mantine-NumberInput-label"
-            for="mantine-gac6m4he0"
-            id="mantine-gac6m4he0-label"
-            style="color: white; font-size: 16px"
-            >Chain ID<span
-              class="mantine-focus-auto m_b6d8b162 mantine-Text-root"
-              style="color: var(--mantine-color-red-9)"
-            >
-              *</span
-            ></label
-          >
-          <div
-            class="m_6c018570 mantine-Input-wrapper mantine-NumberInput-wrapper"
-            data-variant="filled"
-            data-with-right-section="true"
-            style="
-              --input-radius: var(--mantine-radius-md);
-              --input-right-section-width: var(--ni-right-section-width-sm);
-            "
-          >
-            <input
-              class="m_8fb7ebe7 mantine-Input-input mantine-NumberInput-input"
-              data-variant="filled"
-              color="white"
-              placeholder="13765"
-              data-path="evmChainId"
-              aria-invalid="false"
-              id="mantine-gac6m4he0"
-              type="text"
-              value=""
-              inputmode="numeric"
-              style="background-color: rgb(9, 11, 18); color: white"
-            />
-            <div
-              data-position="right"
-              class="m_82577fc2 mantine-Input-section mantine-NumberInput-section"
-            >
-              <div
-                class="m_4451eb3a mantine-Center-root"
-                aria-haspopup="dialog"
-                aria-expanded="false"
-                aria-controls="mantine-elcqvkirv-dropdown"
-                id="mantine-elcqvkirv-target"
-              >
-                <svg
-                  viewBox="0 0 20 20"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                  style="
-                    width: calc(1.25rem * var(--mantine-scale));
-                    height: calc(1.25rem * var(--mantine-scale));
-                  "
-                >
-                  <circle cx="10" cy="10" r="10" fill="#202738"></circle>
-                  <path
-                    d="M10 14L10 10"
-                    stroke="white"
-                    stroke-width="1.5"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  ></path>
-                  <circle cx="10" cy="7" r="1" fill="white"></circle>
-                </svg>
-              </div>
-            </div>
-          </div>
-        </div>
+          :title="'Chain ID'"
+          :placeholder="'1234'"
+          :isRequire="true"
+          :minLength="1"
+          :maxLength="11"
+          v-model="form.chainID"
+        />
       </div>
     </fieldset>
   </div>
@@ -221,7 +160,10 @@
 <script setup>
 import { useAppStore } from '~/store/app'
 const appStore = useAppStore()
-let name = ref('')
+let form = ref({
+  name: '',
+  chainID: '',
+})
 </script>
 
 <style scoped>
