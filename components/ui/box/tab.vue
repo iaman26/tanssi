@@ -9,7 +9,7 @@
     style="gap: 20px"
   >
     <button
-      class="mantine-focus-auto m_c3381914 m_4ec4dce6 mantine-Tabs-tab ChooseTemplateStep_tab__3YdK3 m_87cf2631 mantine-UnstyledButton-root"
+      class="tab-1 mantine-focus-auto m_c3381914 m_4ec4dce6 mantine-Tabs-tab ChooseTemplateStep_tab__3YdK3 m_87cf2631 mantine-UnstyledButton-root"
       data-variant="pills"
       :data-active="appStore.isTabsBox === 1"
       data-orientation="vertical"
@@ -24,7 +24,6 @@
       style="
         background-color: rgb(255, 80, 45);
         flex-grow: 0;
-        background-image: url('/images/logo_ethereum_light.svg');
         background-repeat: no-repeat;
         background-position: 85% center;
         padding-left: var(--mantine-spacing-md);
@@ -61,7 +60,7 @@
         </p></span
       ></button
     ><button
-      class="mantine-focus-auto m_c3381914 m_4ec4dce6 mantine-Tabs-tab ChooseTemplateStep_tab__3YdK3 m_87cf2631 mantine-UnstyledButton-root"
+      class="tab-2 mantine-focus-auto m_c3381914 m_4ec4dce6 mantine-Tabs-tab ChooseTemplateStep_tab__3YdK3 m_87cf2631 mantine-UnstyledButton-root"
       data-variant="pills"
       data-orientation="vertical"
       data-placement="left"
@@ -76,7 +75,6 @@
       style="
         background-color: rgb(72, 166, 167);
         flex-grow: 0;
-        background-image: url('/images/logo_substrate_light.svg');
         background-repeat: no-repeat;
         background-position: 85% center;
         padding-left: var(--mantine-spacing-md);
@@ -113,7 +111,7 @@
         </p></span
       ></button
     ><button
-      class="mantine-focus-auto m_c3381914 m_4ec4dce6 mantine-Tabs-tab ChooseTemplateStep_tab__3YdK3 m_87cf2631 mantine-UnstyledButton-root"
+      class="tab-3 mantine-focus-auto m_c3381914 m_4ec4dce6 mantine-Tabs-tab ChooseTemplateStep_tab__3YdK3 m_87cf2631 mantine-UnstyledButton-root"
       data-variant="pills"
       data-orientation="vertical"
       data-placement="left"
@@ -127,7 +125,6 @@
       style="
         background-color: rgb(255, 161, 19);
         flex-grow: 0;
-        background-image: url('/images//icons/json-light-icon.svg');
         background-repeat: no-repeat;
         background-position: 85% center;
         padding-left: var(--mantine-spacing-md);
@@ -185,5 +182,14 @@ const { setTabBox } = appStore
   .__m__-roq9 {
     margin-bottom: 0rem;
   }
+}
+.tab-1 {
+  background-image: url(~/assets/img/logo_ethereum_light.svg);
+}
+.tab-2 {
+  background-image: url(~/assets/img/logo_substrate_light.svg);
+}
+.tab-3 {
+  background-image: url(~/assets/icon/json-light-icon.svg);
 }
 </style>

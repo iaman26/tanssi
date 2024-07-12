@@ -43,25 +43,11 @@
       >
         <div class="">
           <button
-            class="mantine-focus-auto mantine-active mantine-Button-root m_87cf2631 mantine-UnstyledButton-root"
+            class="mantine-focus-auto mantine-active mantine-Button-root m_87cf2631 mantine-UnstyledButton-root rounded-xl bg-[#1b2b34] p-2 text-white"
             data-variant="light"
             data-size="sm"
             data-with-right-section="true"
             type="button"
-            style="
-              color: var(--mantine-color-white);
-              opacity: 1;
-              --button-height: var(--button-height-sm);
-              --button-padding-x: var(--button-padding-x-sm);
-              --button-fz: var(--mantine-font-size-sm);
-              --button-bg: var(--mantine-color-tanssiTeal-light);
-              --button-hover: var(--mantine-color-tanssiTeal-light-hover);
-              --button-color: var(--mantine-color-tanssiTeal-light-color);
-              --button-bd: calc(0.0625rem * var(--mantine-scale)) solid
-                transparent;
-              margin-top: var(--mantine-spacing-xs);
-              font-weight: 400;
-            "
           >
             <span class="m_80f1301b mantine-Button-inner"
               ><span class="m_811560b9 mantine-Button-label">Add contract</span

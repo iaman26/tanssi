@@ -44,125 +44,22 @@
           flex-direction: row;
         "
       >
-        <div
-          class="m_46b77525 mantine-InputWrapper-root __m__-rosl"
-          style="position: relative"
-        >
-          <label
-            class="m_8fdc1311 mantine-InputWrapper-label"
-            for="mantine-slg3mk3ru"
-            id="mantine-slg3mk3ru-label"
-            style="color: white; font-size: 16px"
-            >Sudo<span
-              class="mantine-focus-auto m_b6d8b162 mantine-Text-root"
-              style="color: var(--mantine-color-red-9)"
-            >
-              *</span
-            ></label
-          >
-          <div
-            class=""
-            aria-haspopup="listbox"
-            autocomplete="off"
-            aria-controls="mantine-xeishtn0w"
-          >
-            <div
-              class="m_46b77525 mantine-InputWrapper-root mantine-TextInput-root"
-            >
-              <div
-                class="m_6c018570 mantine-Input-wrapper mantine-TextInput-wrapper"
-                data-variant="filled"
-                style="--input-radius: var(--mantine-radius-md)"
-              >
-                <input
-                  class="m_8fb7ebe7 mantine-Input-input mantine-TextInput-input"
-                  data-variant="filled"
-                  color="white"
-                  :placeholder="`${appStore.isTabsBox === 1 ? '0x987C17e98F1D5838940D63bd3B8BA9BC32B315a2' : 'Enter your sudo address'}`"
-                  spellcheck="false"
-                  autocomplete="off"
-                  data-path="sudoAddress"
-                  aria-invalid="false"
-                  id="mantine-zj0hvjgq4"
-                  value=""
-                  style="background-color: rgb(9, 11, 18); color: white"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          class="m_e2f5cd4e m_46b77525 mantine-InputWrapper-root mantine-NumberInput-root"
-          style="flex: 1 1 0%; width: 100%"
-        >
-          <label
-            class="m_8fdc1311 mantine-InputWrapper-label mantine-NumberInput-label"
-            for="mantine-cgys132dx"
-            id="mantine-cgys132dx-label"
-            style="color: white; font-size: 16px"
-            >Balance<span
-              class="mantine-focus-auto m_b6d8b162 mantine-Text-root"
-              style="color: var(--mantine-color-red-9)"
-            >
-              *</span
-            ></label
-          >
-          <div
-            class="m_6c018570 mantine-Input-wrapper mantine-NumberInput-wrapper"
-            data-variant="filled"
-            data-with-right-section="true"
-            style="
-              --input-radius: var(--mantine-radius-md);
-              --input-right-section-width: var(--ni-right-section-width-sm);
-            "
-          >
-            <input
-              class="m_8fb7ebe7 mantine-Input-input mantine-NumberInput-input"
-              data-variant="filled"
-              color="white"
-              placeholder="Your balance"
-              data-path="sudoBalance"
-              aria-invalid="false"
-              id="mantine-cgys132dx"
-              type="text"
-              value=""
-              inputmode="numeric"
-              style="background-color: rgb(9, 11, 18); color: white"
-            />
-            <div
-              data-position="right"
-              class="m_82577fc2 mantine-Input-section mantine-NumberInput-section"
-            >
-              <div
-                class="m_4451eb3a mantine-Center-root"
-                aria-haspopup="dialog"
-                aria-expanded="false"
-                aria-controls="mantine-9ceeljobd-dropdown"
-                id="mantine-9ceeljobd-target"
-              >
-                <svg
-                  viewBox="0 0 20 20"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                  style="
-                    width: calc(1.25rem * var(--mantine-scale));
-                    height: calc(1.25rem * var(--mantine-scale));
-                  "
-                >
-                  <circle cx="10" cy="10" r="10" fill="#202738"></circle>
-                  <path
-                    d="M10 14L10 10"
-                    stroke="white"
-                    stroke-width="1.5"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  ></path>
-                  <circle cx="10" cy="7" r="1" fill="white"></circle>
-                </svg>
-              </div>
-            </div>
-          </div>
-        </div>
+        <UiTextForm
+          :title="'Sudo'"
+          class="xl:w-[70%]"
+          :placeholder="`${appStore.isTabsBox === 1 ? '0x987C17e98F1D5838940D63bd3B8BA9BC32B315a2' : 'Enter your sudo address'}`"
+          :isRequire="true"
+          v-model="form.sudo"
+          type="number"
+        />
+        <UiTextForm
+          :title="'Balance'"
+          class="xl:w-[30%]"
+          :placeholder="'Your balance'"
+          :isRequire="true"
+          v-model="form.balance"
+          type="number"
+        />
       </div>
       <button
         class="mantine-focus-auto mantine-active mantine-Button-root m_87cf2631 mantine-UnstyledButton-root"
@@ -184,12 +81,14 @@
           padding-inline: 0rem;
           font-weight: 700;
         "
+        @click="onAdvanced()"
       >
         <span class="m_80f1301b mantine-Button-inner"
           ><span class="m_811560b9 mantine-Button-label">Advanced</span
           ><span class="m_a74036a mantine-Button-section" data-position="right"
             ><div
-              class="m_4451eb3a mantine-Center-root"
+              class="m_4451eb3a mantine-Center-root duration-100"
+              :class="isAdvanced ? '-rotate-180' : 0"
               style="
                 border-radius: 5px;
                 padding: calc(0.125rem * var(--mantine-scale));
@@ -212,7 +111,17 @@
               </svg></div></span
         ></span>
       </button>
-      <div class="" style="display: none">
+      <div
+        v-if="isAdvanced"
+        style="
+          transition-property: transform, opacity;
+          transition-duration: 100ms;
+          transition-timing-function: ease;
+          transform-origin: center top;
+          opacity: 1;
+          transform: scaleY(1);
+        "
+      >
         <p
           class="mantine-focus-auto m_b6d8b162 mantine-Text-root"
           data-size="sm"
@@ -226,6 +135,16 @@
         >
           Distribute and allocate balances to address of your gas token
         </p>
+        <UiAddressItem
+          v-for="(item, idx) in listAddress"
+          :address="item.address"
+          :balance="item.balance"
+          :idx="idx"
+          :key="idx"
+          @onInputAddress="onInputAddress"
+          @onInputBalance="onInputBalance"
+          @deleteItem="deleteItem"
+        />
         <div
           class="m_6d731127 mantine-Stack-root"
           style="
@@ -234,9 +153,9 @@
             --stack-justify: flex-start;
           "
         >
-          <div class="">
+          <div class="mt-4">
             <button
-              class="mantine-focus-auto mantine-active mantine-Button-root m_87cf2631 mantine-UnstyledButton-root"
+              class="mantine-focus-auto mantine-active mantine-Button-root m_87cf2631 mantine-UnstyledButton-root rounded-xl bg-[#1b2b34] p-2"
               data-variant="light"
               data-size="sm"
               data-with-right-section="true"
@@ -244,16 +163,9 @@
               style="
                 color: var(--mantine-color-white);
                 opacity: 1;
-                --button-height: var(--button-height-sm);
-                --button-padding-x: var(--button-padding-x-sm);
-                --button-fz: var(--mantine-font-size-sm);
-                --button-bg: var(--mantine-color-tanssiTeal-light);
-                --button-hover: var(--mantine-color-tanssiTeal-light-hover);
-                --button-color: var(--mantine-color-tanssiTeal-light-color);
-                --button-bd: calc(0.0625rem * var(--mantine-scale)) solid
-                  transparent;
                 font-weight: 400;
               "
+              @click="addAddress()"
             >
               <span class="m_80f1301b mantine-Button-inner"
                 ><span class="m_811560b9 mantine-Button-label">Add address</span
@@ -286,6 +198,37 @@
 <script setup>
 import { useAppStore } from '~/store/app'
 const appStore = useAppStore()
+let form = ref({
+  sudo: '',
+  balance: '',
+})
+const listAddress = ref([])
+const addressItem = ref({
+  address: '',
+  balance: '',
+})
+function addAddress() {
+  listAddress.value.push(addressItem.value)
+}
+let isAdvanced = ref(false)
+function onAdvanced() {
+  isAdvanced.value = !isAdvanced.value
+}
+function onInputAddress(value, idx) {
+  const cloneAdrArray = JSON.parse(JSON.stringify(listAddress.value))
+  let itemAdr = cloneAdrArray[idx]
+  itemAdr.address = value
+  listAddress.value = cloneAdrArray
+}
+function onInputBalance(value, idx) {
+  const cloneAdrArray = JSON.parse(JSON.stringify(listAddress.value))
+  let itemBalance = cloneAdrArray[idx]
+  itemBalance.balance = value
+  listAddress.value = cloneAdrArray
+}
+function deleteItem(idx) {
+  listAddress.value.splice(idx, 1)
+}
 </script>
 <style scoped>
 .pd {
@@ -306,6 +249,22 @@ const appStore = useAppStore()
 }
 @media (min-width: 75em) {
   .__m__-rosl {
+    width: 70%;
+  }
+}
+.__m__-r5c {
+  margin-block: var(--mantine-spacing-xs);
+}
+@media (min-width: 75em) {
+  .__m__-r5c {
+    margin-block: 0rem;
+  }
+}
+.__m__-r5f {
+  width: 100%;
+}
+@media (min-width: 75em) {
+  .__m__-r5f {
     width: 70%;
   }
 }

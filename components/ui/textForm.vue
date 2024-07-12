@@ -1,7 +1,7 @@
 <template>
   <div
-    class="m_46b77525 mantine-InputWrapper-root mantine-TextInput-root"
-    style="width: 100%"
+    :class="attrs.class"
+    class="m_46b77525 mantine-InputWrapper-root mantine-TextInput-root w-full"
   >
     <label
       class="m_8fdc1311 mantine-InputWrapper-label mantine-TextInput-label flex"
@@ -13,7 +13,7 @@
       <span
         class="mantine-focus-auto m_b6d8b162 mantine-Text-root"
         style="color: var(--mantine-color-red-9)"
-        v-if="validateErr || props.modelValue.length === 0"
+        v-if="validateErr || (props.modelValue.length === 0 && props.isRequire)"
       >
         *</span
       >
@@ -35,13 +35,13 @@
       </svg>
     </label>
     <div
-      class="m_6c018570 mantine-Input-wrapper mantine-TextInput-wrapper rounded"
+      class="m_6c018570 mantine-Input-wrapper mantine-TextInput-wrapper rounded-md"
       data-variant="filled"
       style="--input-radius: var(--mantine-radius-md)"
       :class="validateErr ? 'border-1 border-rose-600' : ''"
     >
       <input
-        class="m_8fb7ebe7 mantine-Input-input mantine-TextInput-input"
+        class="m_8fb7ebe7 mantine-Input-input mantine-TextInput-input rounded-md"
         data-variant="filled"
         color="white"
         :placeholder="props.placeholder"
@@ -59,12 +59,14 @@
         @focus="focusInput()"
       />
     </div>
-    <p class="mt-2 h-5 text-sm text-red-600">
+    <p v-if="messageErr" class="mt-2 h-5 text-sm text-red-600">
       {{ messageErr }}
     </p>
   </div>
 </template>
 <script setup>
+import { useAttrs } from 'vue'
+const attrs = useAttrs()
 const props = defineProps({
   title: {
     type: String,
@@ -98,6 +100,7 @@ const props = defineProps({
     required: false,
   },
 })
+
 const emit = defineEmits(['update:modelValue'])
 let requireError = ref(false)
 let minLengthError = ref(false)
