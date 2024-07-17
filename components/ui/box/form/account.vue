@@ -50,7 +50,7 @@
           :placeholder="`${appStore.isTabsBox === 1 ? '0x987C17e98F1D5838940D63bd3B8BA9BC32B315a2' : 'Enter your sudo address'}`"
           :isRequire="true"
           v-model="form.sudo"
-          type="number"
+          :addressType="true"
         />
         <UiTextForm
           :title="'Balance'"
@@ -58,7 +58,6 @@
           :placeholder="'Your balance'"
           :isRequire="true"
           v-model="form.balance"
-          type="number"
         />
       </div>
       <button

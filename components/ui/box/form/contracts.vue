@@ -41,6 +41,16 @@
           --stack-justify: flex-start;
         "
       >
+        <UiContractItem
+          v-for="(item, idx) in listContract"
+          :contract="item.contract"
+          :bytecode="item.bytecode"
+          :idx="idx"
+          :key="idx"
+          @onInputContract="onInputContract"
+          @onInputBytecode="onInputBytecode"
+          @deleteItem="deleteItem"
+        />
         <div class="">
           <button
             class="mantine-focus-auto mantine-active mantine-Button-root m_87cf2631 mantine-UnstyledButton-root rounded-xl bg-[#1b2b34] p-2 text-white"
@@ -48,6 +58,7 @@
             data-size="sm"
             data-with-right-section="true"
             type="button"
+            @click="addContract()"
           >
             <span class="m_80f1301b mantine-Button-inner"
               ><span class="m_811560b9 mantine-Button-label">Add contract</span
@@ -76,6 +87,37 @@
     </fieldset>
   </div>
 </template>
+<script setup>
+import { useAppStore } from '~/store/app'
+const appStore = useAppStore()
+const listContract = ref([])
+const contractItem = ref({
+  contract: '',
+  bytecode: '',
+})
+function addContract() {
+  listContract.value.push(contractItem.value)
+}
+let isAdvanced = ref(false)
+function onAdvanced() {
+  isAdvanced.value = !isAdvanced.value
+}
+function onInputContract(value, idx) {
+  const cloneContractArray = JSON.parse(JSON.stringify(listContract.value))
+  let itemAdr = cloneContractArray[idx]
+  itemAdr.contract = value
+  listContract.value = cloneContractArray
+}
+function onInputBalance(value, idx) {
+  const cloneContractArray = JSON.parse(JSON.stringify(listContract.value))
+  let itemBalance = cloneContractArray[idx]
+  itemBalance.balance = value
+  listContract.value = cloneContractArray
+}
+function deleteItem(idx) {
+  listContract.value.splice(idx, 1)
+}
+</script>
 <style scoped>
 .pd {
   padding: calc(0.9375rem * var(--mantine-scale));

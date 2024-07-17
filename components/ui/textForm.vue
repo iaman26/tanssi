@@ -99,6 +99,11 @@ const props = defineProps({
     default: 'text',
     required: false,
   },
+  addressType: {
+    type: Boolean,
+    default: false,
+    required: false,
+  },
 })
 
 const emit = defineEmits(['update:modelValue'])
@@ -115,19 +120,20 @@ const validateErr = computed(() => {
   }
 })
 const messageErr = computed(() => {
-  switch (true) {
-    case requireError.value:
+  if (requireError.value) {
+    if (props?.minLength !== 0) {
       return `String must contain at least ${props?.minLength} character(s)`
-      break
-    case minLengthError.value:
-      return `String must contain at least ${props?.minLength} character(s)`
-      break
-    case maxLengthError.value:
-      return `String must contain at most ${props?.maxLength} character(s)`
-      break
-    default:
-      return
-      break
+    } else {
+      return 'Please enter ...'
+    }
+  } else if (props.addressType && isValidAddress && props.modelValue) {
+    return 'Invalid address. Must be 0x-prefixed 20 bytes hex string.'
+  } else if (minLengthError.value) {
+    return `String must contain at least ${props?.minLength} character(s)`
+  } else if (maxLengthError.value) {
+    return `String must contain at most ${props?.maxLength} character(s)`
+  } else {
+    return
   }
 })
 watch(
@@ -138,9 +144,24 @@ watch(
     }
   }
 )
-function focusInput() {
-  onInput.value = true
-}
+function focusInput() {}
+let isValidAddress = computed(() => {
+  if (
+    typeof props?.modelValue !== 'string' ||
+    props?.modelValue.substring(0, 2) !== '0x'
+  ) {
+    return true
+  }
+  if (props?.modelValue.length !== 42) {
+    return true
+  }
+  const hexPart = props?.modelValue.substring(2)
+  const hexRegex = /^[0-9a-fA-F]+$/
+  if (!hexRegex.test(hexPart)) {
+    return true
+  }
+  return false
+})
 function handleBlur() {
   onInput.value = false
   if (props?.modelValue.length === 0 && props?.isRequire) {
@@ -149,7 +170,7 @@ function handleBlur() {
     minLengthError.value = true
   } else if (
     props?.modelValue.length > props?.maxLength &&
-    props?.maxLengthError != 0
+    maxLengthError.value != 0
   ) {
     maxLengthError.value = true
   } else {
