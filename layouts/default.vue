@@ -13,20 +13,16 @@
       <slot />
     </main>
     <UiModalConnectWallet v-if="appStore.isModal" @closeModal="closeModal" />
-    <UiModalConnectWallet
-      v-if="appStore.isModalConnect2"
-      @closeModal="closeModal"
-    />
+    <UiModalTermsConditions v-if="appStore.isModalTermsConditions" />
   </div>
 </template>
 <script setup>
 import { onMounted, onUnmounted } from 'vue'
 import { useAppStore } from '~/store/app'
 const appStore = useAppStore()
-const { setIsModal, setIsModalConnect2, setIsWindowWidth } = appStore
+const { setIsModal, setIsWindowWidth } = appStore
 function closeModal() {
   setIsModal(false)
-  setIsModalConnect2(false)
 }
 
 function updateWidth() {

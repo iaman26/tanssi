@@ -4,7 +4,7 @@ export const useAppStore = defineStore({
   id: 'app',
   state: (): any => ({
     isModal: false,
-    isModalConnect2: false,
+    isModalTermsConditions: false,
     isTabsBox: 1,
     isStep: 1,
     windowWidth: 1140,
@@ -16,8 +16,8 @@ export const useAppStore = defineStore({
     setIsModal(value: boolean) {
       this.isModal = value
     },
-    setIsModalConnect2(value: boolean) {
-      this.isModalConnect2 = value
+    setIsModalTermsConditions(value: boolean) {
+      this.isModalTermsConditions = value
     },
     setTabBox(value: Number) {
       this.isTabsBox = value
