@@ -1,5 +1,27 @@
 <template>
-  <UiModal>
+  <div
+    class="m_9df02822 mantine-Modal-root"
+    style="
+      --modal-radius: var(--mantine-radius-lg);
+      --modal-y-offset: 5dvh;
+      --mb-z-index: 201;
+      --mb-padding: var(--mantine-spacing-xl);
+      --modal-size: var(--modal-size-xl);
+    "
+    data-size="xl"
+  >
+    <div
+      class="mantine-Modal-overlay m_9814e45f mantine-Overlay-root"
+      data-fixed="true"
+      style="
+        --overlay-bg: rgba(0, 0, 0, 0.9);
+        --overlay-z-index: 201;
+        transition-property: opacity;
+        transition-duration: 200ms;
+        transition-timing-function: ease;
+        opacity: 1;
+      "
+    ></div>
     <div class="m_60c222c7 m_1f958f16 mantine-Modal-inner">
       <section
         class="m_fd1ab0aa m_54c44539 mantine-Modal-content m_1b7284a3 mantine-Paper-root"
@@ -203,7 +225,7 @@
             "
           >
             <button
-              class="mantine-focus-auto mantine-active m_77c9d27d mantine-Button-root m_87cf2631 mantine-UnstyledButton-root"
+              class="mantine-focus-auto mantine-active bg m_77c9d27d mantine-Button-root m_87cf2631 mantine-UnstyledButton-root border-[#546080] bg-[#202738]"
               data-variant="default"
               data-size="md"
               type="button"
@@ -253,7 +275,7 @@
         </div>
       </section>
     </div>
-  </UiModal>
+  </div>
 </template>
 <script setup>
 import { useAppStore } from '~/store/app'
